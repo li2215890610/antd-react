@@ -1,0 +1,47 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add react-router
+
+PATH: 
+  /Users/liguangyang/.rvm/gems/ruby-2.2.2/bin:/Users/liguangyang/.rvm/gems/ruby-2.2.2@global/bin:/Users/liguangyang/.rvm/rubies/ruby-2.2.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/liguangyang/.rvm/gems/ruby-2.2.2/bin:/Users/liguangyang/.rvm/gems/ruby-2.2.2@global/bin:/Users/liguangyang/.rvm/rubies/ruby-2.2.2/bin:/Users/liguangyang/.rvm/bin:/Users/liguangyang/.rvm/bin
+
+Yarn version: 
+  1.9.4
+
+Node version: 
+  8.10.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/liguangyang/Desktop/my-app/package.json: Unexpected token } in JSON at position 167
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1130:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:92:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:103:13
+      at <anonymous>
+
+npm manifest: 
+  {
+    "name": "my-app",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+      "react": "^16.4.2",
+      "react-dom": "^16.4.2",
+      "react-scripts": "1.1.4",
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test --env=jsdom",
+      "eject": "react-scripts eject"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
