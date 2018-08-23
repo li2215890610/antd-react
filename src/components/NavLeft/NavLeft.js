@@ -11,11 +11,7 @@ const SubMenu = Menu.SubMenu;
 const { Sider } = Layout;
 
 
-console.log(menuConfig);
-
 class NavLeft extends React.Component {
-
-  rootSubmenuKeys = ['/home', '/ui', '/form','/table','/rich','/city','/order','/user','/bikeMap',,'/charts','/permission'];
 
   constructor(props) {
     super(props)
@@ -25,6 +21,8 @@ class NavLeft extends React.Component {
       current:"/home"
     };
   }
+
+  rootSubmenuKeys = ['/home', '/ui', '/form','/table','/rich','/city','/order','/user','/bikeMap','/charts','/permission']
 
   toggleCollapsed = () => {
     this.setState({
@@ -70,9 +68,11 @@ class NavLeft extends React.Component {
     let theme = 'dark'
     return (
       <div className='nav_left'>
-        <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
-          <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
-        </Button>
+        <div className='nav_left_top'>
+          <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
+            <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
+          </Button>
+        </div>
         <Sider
           trigger={null}
           collapsed={this.state.collapsed}
