@@ -1,5 +1,8 @@
 import React from 'react';
 
+
+import styles from "./Footer.css";
+
 class Footer extends React.Component{
   constructor(props){
     super(props)
@@ -8,8 +11,10 @@ class Footer extends React.Component{
     }
   }
   render(){
+    console.log(styles);
+    
     return (
-      <div style={{ textAlign: 'center' }}>
+      <div className={styles.footer}>
           Ant Design ©2018 Created by Ant UED
       </div>
     );

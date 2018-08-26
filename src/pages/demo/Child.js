@@ -1,6 +1,7 @@
 import React from "react";
 
-import "./index.less";
+// import "./index.less";
+import styles from "./index.css";
 
 export default class Child extends React.Component {
     constructor(props) {
@@ -50,7 +51,7 @@ export default class Child extends React.Component {
     }
     render() {
         let { name} = this.props;
-        return <div className={'p'}>
+        return <div className={styles.p}>
           <p>我是子组件</p>
            <p>{name}</p>
         </div>

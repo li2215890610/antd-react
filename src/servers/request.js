@@ -1,5 +1,5 @@
-import jsonpRequset from "jsonp";
 
+import jsonpRequset from "jsonp";
 
 export default class jsonp {
   static jsonp (data){
@@ -7,10 +7,10 @@ export default class jsonp {
       jsonpRequset(data.url,{
         param:'callback'
       },(err,res)=>{
-        if (res.status == 'success') {
-          resolve(res);
+        if (res.status === 'success') {
+          resolve(res.results[0].weather_data[0]);
         } else {
-          reject(res.messsage);
+          reject(new Error(res.messsage));
         }
       })
     })

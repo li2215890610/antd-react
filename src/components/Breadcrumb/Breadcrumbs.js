@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Col, Row, Breadcrumb } from 'antd';
+import { Col, Row, Breadcrumb, message } from 'antd';
 
-import "./Breadcrumbs.css";
+import "./Breadcrumbs.less";
 
 import utlis from "../../utlis/utlis";
 
@@ -12,7 +12,7 @@ class Breadcrumbs extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      sysTime:null
+      weatherData:{}
     }
   }
   city = '北京'
@@ -33,17 +33,39 @@ class Breadcrumbs extends React.Component {
     jsonpRequest.jsonp({
       url:'http://api.map.baidu.com/telematics/v3/weather?location='+encodeURIComponent(city)+'&output=json&ak=3p49MVra6urFRGOT9s8UBWr2'
     }).then((res)=>{
-      console.log(res);
-      
+      this.setState({
+        weatherData:res
+      })
+    }).catch((err)=>{
+      console.log(err);
+      message.error(err.message)
     })
   }
 
+  // getWeatherData = () =>{
+  //   let { sysTime, weatherData} = this.state;
+  //   if (sysTime && weatherData) {
+  //     return (
+  //       <div>
+  //         <span>{sysTime}</span>
+  //         <span className="weather-img">
+  //             <img src={weatherData.dayPictureUrl} alt="" />
+  //         </span>
+  //         <span className="weather-detail">
+  //             {weatherData.weather}
+  //         </span>
+  //       </div>
+  //     ) 
+  //   }
+  // }
+  
   render(){
-    let { sysTime} = this.state;
+    let { sysTime, weatherData} = this.state;
+
     return (
       <div>
         <Row className='breadcrumbs'>
-          <Col span="19">
+          <Col span="18">
             <Breadcrumb>
               <Breadcrumb.Item>Home</Breadcrumb.Item>
               <Breadcrumb.Item><a href="">Application Center</a></Breadcrumb.Item>
@@ -51,9 +73,14 @@ class Breadcrumbs extends React.Component {
               <Breadcrumb.Item>An Application</Breadcrumb.Item>
             </Breadcrumb>
           </Col>
-          <Col span="5">
-            <span>{sysTime}</span>
-            <span>晴</span>
+          <Col span="6">
+            <span className="sysTime">{sysTime}</span>
+            <span className="weather-img">
+                <img src={weatherData.dayPictureUrl} alt="" />
+            </span>
+            <span className="weather-detail">
+                {weatherData.weather}
+            </span>
           </Col>
         </Row>
       </div>
