@@ -6,6 +6,7 @@ import "./Breadcrumbs.css";
 
 import utlis from "../../utlis/utlis";
 
+import jsonpRequest from "../../servers/request";
 
 class Breadcrumbs extends React.Component {
   constructor(props){
@@ -14,13 +15,29 @@ class Breadcrumbs extends React.Component {
       sysTime:null
     }
   }
-  componentWillMount = ()=>{
+  city = '北京'
+  componentWillMount = ( )=>{
     setInterval(()=>{
       this.setState({
         sysTime:utlis.formateData(new Date().getTime())
       })
     }, 1000)
+  
+    this.getWeatherAPIData()
+    
   }
+
+  getWeatherAPIData = ( )=>{
+    let { city }  = this;
+    // encodeURIComponent 中文编码
+    jsonpRequest.jsonp({
+      url:'http://api.map.baidu.com/telematics/v3/weather?location='+encodeURIComponent(city)+'&output=json&ak=3p49MVra6urFRGOT9s8UBWr2'
+    }).then((res)=>{
+      console.log(res);
+      
+    })
+  }
+
   render(){
     let { sysTime} = this.state;
     return (
