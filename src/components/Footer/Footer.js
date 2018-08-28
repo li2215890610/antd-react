@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-import styles from "./Footer.css";
+import "./Footer.less";
 
 class Footer extends React.Component{
   constructor(props){
@@ -10,12 +9,12 @@ class Footer extends React.Component{
 
     }
   }
+  link_url = 'https://github.com/li2215890610/antd-React'
   render(){
-    console.log(styles);
-    
+    let {link_url} = this;
     return (
-      <div className={styles.footer}>
-          Ant Design ©2018 Created by Ant UED
+      <div className='footer'>
+          Ant React ©2018 UED 视觉交互 版权所有 归属 <a className="link" href={link_url} target="_blank">杨大侠</a>
       </div>
     );
   }

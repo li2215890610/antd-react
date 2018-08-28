@@ -48,7 +48,7 @@ class Breadcrumbs extends React.Component {
   //     return (
   //       <div>
   //         <span>{sysTime}</span>
-  //         <span className="weather-img">
+  //         <span className="weather_img">
   //             <img src={weatherData.dayPictureUrl} alt="" />
   //         </span>
   //         <span className="weather-detail">
@@ -65,7 +65,7 @@ class Breadcrumbs extends React.Component {
     return (
       <div>
         <Row className='breadcrumbs'>
-          <Col span="18">
+          <Col span="17">
             <Breadcrumb>
               <Breadcrumb.Item>Home</Breadcrumb.Item>
               <Breadcrumb.Item><a href="">Application Center</a></Breadcrumb.Item>
@@ -73,12 +73,12 @@ class Breadcrumbs extends React.Component {
               <Breadcrumb.Item>An Application</Breadcrumb.Item>
             </Breadcrumb>
           </Col>
-          <Col span="6">
+          <Col span="7" className='weather_data'>
             <span className="sysTime">{sysTime}</span>
-            <span className="weather-img">
+            <span className="weather_img">
                 <img src={weatherData.dayPictureUrl} alt="" />
             </span>
-            <span className="weather-detail">
+            <span className="weather_detail">
                 {weatherData.weather}
             </span>
           </Col>

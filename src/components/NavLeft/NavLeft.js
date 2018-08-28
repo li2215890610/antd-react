@@ -4,7 +4,7 @@ import { Menu, Icon, Button, Layout } from 'antd';
 
 import menuConfig from "../../config/menuConfig";
 
-import "./NavLeft.css";
+import "./NavLeft.less";
 
 const SubMenu = Menu.SubMenu;
 
