@@ -1,6 +1,6 @@
 import React from "react";
 
-import Headers from "./components/Header/Header";
+import Header from "./components/Header/Header";
 
 import Footers from "./components/Footer/Footer";
 
@@ -13,7 +13,7 @@ import './styles/common.less';
 
 import { Layout } from 'antd';
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 
 class Admin extends React.Component {
@@ -28,12 +28,10 @@ class Admin extends React.Component {
   render() {
     return (
       <div>
+        <Header />
         <Layout className='container'>
           <NavLefts className='nav_left' />
           <Layout className='content'>
-            <Header className='headers'>
-              <Headers />
-            </Header>
             <Content>
               <Contents/>
             </Content>

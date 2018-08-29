@@ -17,9 +17,7 @@ class Contents extends React.Component{
   render(){
     return (
       <div>
-        22222
           <Content style={{ margin: '0px 16px 0px 16px', padding:  '0px 24px', background: '#fff', minHeight: 280 }}>
-            
             <Home/>
           </Content>
       </div>

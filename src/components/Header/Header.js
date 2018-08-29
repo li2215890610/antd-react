@@ -1,10 +1,13 @@
 import React from 'react';
 
-import { Col, Row } from 'antd';
-
 import "./Header.less";
 
-class Header extends React.Component {
+import { Layout, Col, Row } from 'antd';
+
+const { Header } = Layout;
+
+
+class Headers extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -19,8 +22,8 @@ class Header extends React.Component {
   render(){
     let { userName} = this.state;
     return (
-      <div className='headers'>
-        <Row>
+      <Header>
+        <Row className='headers'>
           <Col span='24' className='header_top'>
             <div>
               <span>欢迎～{userName}</span>
@@ -28,9 +31,9 @@ class Header extends React.Component {
             </div>
           </Col>
         </Row>
-      </div>
+      </Header>
     );
   }
 }
 
-export default Header;
+export default Headers;
