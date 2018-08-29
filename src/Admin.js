@@ -31,10 +31,10 @@ class Admin extends React.Component {
         <Layout className='container'>
           <NavLefts className='nav_left' />
           <Layout className='content'>
-            <Header>
+            <Header className='headers'>
               <Headers />
             </Header>
-            <Content >
+            <Content>
               <Contents/>
             </Content>
             <Footer>
