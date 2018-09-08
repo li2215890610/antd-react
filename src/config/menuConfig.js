@@ -2,7 +2,7 @@ const menuList = [
   {
       "title": '首页',
       "icon":'home',      
-      "key": '/home',
+      "key": '/admin/home',
   },
   {
       "title": 'UI',
@@ -12,16 +12,6 @@ const menuList = [
           {
               "title": '按钮',
               "key": '/ui/buttons',
-              "children": [
-                {
-                    "title": '登录',
-                    "key": '/form/login',
-                },
-                {
-                    "title": '注册',
-                    "key": '/form/reg',
-                }
-            ]
           },
           {
               "title": '弹框',
@@ -60,11 +50,11 @@ const menuList = [
       "children": [
           {
               "title": '登录',
-              "key": '/form/login',
+              "key": '/admin/form/login',
           },
           {
               "title": '注册',
-              "key": '/form/reg',
+              "key": '/admin/form/reg',
           }
       ]
   },

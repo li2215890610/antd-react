@@ -33,7 +33,10 @@ class Admin extends React.Component {
           <NavLefts className='nav_left' />
           <Layout className='content'>
             <Content>
+
               <Contents/>
+
+              
             </Content>
             <Footer>
               <Footers />

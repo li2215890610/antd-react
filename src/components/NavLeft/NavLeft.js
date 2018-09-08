@@ -2,6 +2,7 @@ import React from "react";
 
 import { Menu, Icon, Button, Layout } from 'antd';
 
+import { Link} from 'react-router-dom';
 import menuConfig from "../../config/menuConfig";
 
 import "./NavLeft.less";
@@ -57,7 +58,9 @@ class NavLeft extends React.Component {
             </SubMenu>
           )
         } else {
-          return (<Menu.Item key={menu.key}>{<span><Icon type={menu.icon} /><span>{menu.title}</span></span>}</Menu.Item>)
+          return (<Menu.Item key={menu.key}>{<span><Icon type={menu.icon} /><span>
+            <Link className='link_font_color' to={menu.key}>{menu.title}</Link>
+          </span></span>}</Menu.Item>)
         }
       })
     )
