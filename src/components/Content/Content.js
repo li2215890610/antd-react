@@ -2,11 +2,13 @@ import React from 'react';
 import { Layout } from 'antd';
 
 
-import { Route, Switch, Link, Redirect } from 'react-router-dom';
+import { Route, Switch, } from 'react-router-dom';
 
 import Home from "../../pages/Home/Home";
 
-import Button from "../../pages/Ui/Buttons/Buttons";
+import Button from "../../pages/Ui/Ui";
+
+import NoMatch from "../../pages/NoMatch/NoMatch";
 
 const { Content } = Layout
 
@@ -21,10 +23,11 @@ class Contents extends React.Component{
   render(){
     return (
       <div>
-          <Content style={{ margin: '0px 16px 0px 16px', padding:  '0px 24px', background: '#fff', minHeight: 280 }}>
+          <Content style={{ margin: '0px 16px 0px 16px', padding:  '20px 5px', background: '#fff', minHeight: 280 }}>
             <Switch>
-              <Route  path='/admin/home' component={Home} exact/>
-              <Route  path='/admin/form/reg' component={Button} exact/>
+              <Route  path='/home' component={Home}/>
+              <Route  path='/ui/button' component={Button} exact/>
+              <Route  component={NoMatch}/>
             </Switch>
           </Content>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Col, Row, Breadcrumb, message } from 'antd';
+import { message } from 'antd';
 
 import "./Breadcrumbs.less";
 
@@ -63,17 +63,8 @@ class Breadcrumbs extends React.Component {
     let { sysTime, weatherData} = this.state;
 
     return (
-      <div>
-        <Row className='breadcrumbs'>
-          <Col span="17">
-            <Breadcrumb>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item><a href="">Application Center</a></Breadcrumb.Item>
-              <Breadcrumb.Item><a href="">Application List</a></Breadcrumb.Item>
-              <Breadcrumb.Item>An Application</Breadcrumb.Item>
-            </Breadcrumb>
-          </Col>
-          <Col span="7" className='weather_data'>
+      <div  className='weather_data'>
+          <div>
             <span className="sysTime">{sysTime}</span>
             <span className="weather_img">
                 <img src={weatherData.dayPictureUrl} alt="" />
@@ -81,8 +72,7 @@ class Breadcrumbs extends React.Component {
             <span className="weather_detail">
                 {weatherData.weather}
             </span>
-          </Col>
-        </Row>
+          </div>
       </div>
     );
   }

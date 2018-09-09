@@ -2,6 +2,7 @@ import React from 'react';
 
 import "./Header.less";
 
+import Breadcrumbs from "../Breadcrumb/Breadcrumbs";
 import { Layout, Col, Row } from 'antd';
 
 const { Header } = Layout;
@@ -25,7 +26,8 @@ class Headers extends React.Component {
       <Header>
         <Row className='headers'>
           <Col span='24' className='header_top'>
-            <div>
+            <Breadcrumbs/>
+            <div className='header_Go_Out'>
               <span>欢迎～{userName}</span>
               <a href="">退出</a>
             </div>

@@ -7,7 +7,12 @@ import {Form, Input, Button} from 'antd'
 const FormItem = Form.Item;
 
 export default class Login extends React.Component {
-    state = {};
+    constructor(props){
+        super(props)
+        this.state = {
+
+        }
+    }
 
     componentDidMount() {//每次进入登录页清除之前的登录信息
         
@@ -61,7 +66,8 @@ class LoginForm extends React.Component {
         //         });
         //     }
         // });
-        window.location.href="/#/admin"
+
+        window.location.href="/admin/home"
     };
 
     checkUsername = (rule, value, callback) => {

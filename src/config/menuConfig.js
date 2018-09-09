@@ -2,7 +2,7 @@ const menuList = [
   {
       "title": '首页',
       "icon":'home',      
-      "key": '/admin/home',
+      "key": '/home',
   },
   {
       "title": 'UI',
@@ -11,7 +11,7 @@ const menuList = [
       "children": [
           {
               "title": '按钮',
-              "key": '/ui/buttons',
+              "key": '/ui/button',
           },
           {
               "title": '弹框',
