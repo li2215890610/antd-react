@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Button } from "antd";
 
-import  "../Button.less";
 class IconButton extends React.Component {
   // 如果想实用 icon 图标  去copy 图标类 替换 icon属性 
   render() {

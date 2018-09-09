@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button, Modal } from "antd";
+
 class Error extends React.Component {
 
   onOk = () =>{

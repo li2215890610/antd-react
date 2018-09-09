@@ -2,12 +2,16 @@ import React from 'react';
 
 import { Card } from "antd";
 
-import "./Button.less";
 import BasicsButton from "../Button/BasicsButton/BasicsButton";
+
 import IconButton from "../Button/IconButton/IconButton";
+
 import LoadingButton from "../Button/LoadingButton/LoadingButton";
+
 import ButtonGroup from "../Button/ButtonGroup/ButtonGroup";
+
 import ButtonSize from "../Button/ButtonSize/ButtonSize";
+
 class Buttons extends React.Component {
 
   render() {

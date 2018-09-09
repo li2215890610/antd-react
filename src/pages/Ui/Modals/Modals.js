@@ -1,8 +1,11 @@
 import React from 'react';
 
 import { Card } from "antd";
+
 import BasicsModals from "./BasicsModals/BasicsModals";
+
 import InformationConfirmModals from "./InformationConfirmModals/InformationConfirmModals";
+
 class Modals extends React.Component {
 
   render() {

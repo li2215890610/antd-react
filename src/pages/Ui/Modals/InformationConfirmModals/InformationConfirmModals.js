@@ -1,12 +1,17 @@
 import React from 'react';
 
 import { Row, Col } from "antd";
+
 import Confirm from "./Confirm/Confirm";
+
 import Warning from "./Warning/Warning";
+
 import Error from "./Error/Error";
+
 import Success from './Success/Success';
 
 import Info from './Info/Info';
+
 class InformationConfirmModals extends React.Component {
 
   render() {

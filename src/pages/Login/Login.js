@@ -19,7 +19,7 @@ export default class Login extends React.Component {
     }
 
     loginReq = (params) => {
-        window.location.href = '/#/';
+        // window.location.href = '/';
     };
 
     render() {
@@ -67,7 +67,7 @@ class LoginForm extends React.Component {
         //     }
         // });
 
-        window.location.href="/admin/home"
+        window.location.href="/home"
     };
 
     checkUsername = (rule, value, callback) => {

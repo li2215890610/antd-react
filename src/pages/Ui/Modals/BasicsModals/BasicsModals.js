@@ -5,6 +5,7 @@ import { Row, Col } from "antd";
 import DefaultModals from "./DefaultModals/DefaultModals";
 
 import LevelMiddleModals from "./LevelMiddleModals/LevelMiddleModals";
+
 class BasicsModals extends React.Component {
 
   render() {

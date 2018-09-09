@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Button } from "antd";
 
-import "../Button.less";
 class LoadingButton extends React.Component {
   constructor(props) {
     super(props)

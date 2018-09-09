@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Button, Radio } from "antd";
 
-import "../Button.less";
 class ButtonSize extends React.Component {
   constructor(props) {
     super(props)
