@@ -11,7 +11,7 @@ const menuList = [
       "children": [
           {
               "title": '按钮',
-              "key": '/ui/button',
+              "key": '/ui/buttons',
           },
           {
               "title": '弹框',
@@ -23,7 +23,7 @@ const menuList = [
           },
           {
               "title": '通知提醒',
-              "key": '/ui/notification',
+              "key": '/ui/notifications',
           },
           {
               "title": '全局Message',

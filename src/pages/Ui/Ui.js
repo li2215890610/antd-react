@@ -8,6 +8,8 @@ import Modals from "./Modals/Modals";
 
 import Loadings from "./Loadings/Loadings";
 
+import Notifications from "./Notification/Notification";
+
 import "./Ui.less";
 
 class UI extends React.Component {
@@ -16,9 +18,10 @@ class UI extends React.Component {
     return (
       <div>
         <Switch>
-          <Route path='/ui/button' component={Button}/>
+          <Route path='/ui/buttons' component={Button}/>
           <Route path='/ui/modals' component={Modals}/>
           <Route path='/ui/loadings' component={Loadings}/>
+          <Route path='/ui/notifications' component={Notifications}/>
         </Switch>
       </div>
     );
