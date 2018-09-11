@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Card, Row, Col } from "antd";
 
-import Message  from "../../../utlis/NotificationUtlis";
+import Message  from "../../../utlis/MessageUtlis";
 
 import { Button } from 'antd';
 
