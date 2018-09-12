@@ -13,7 +13,7 @@ function notificationMessage(type
   })
 }
 
-function Messages(type,content,duration,cb) {
+function Messages(type,content,duration) {
   message[type](
     content || '通知',
     duration || 3,

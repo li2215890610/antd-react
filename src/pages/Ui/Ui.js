@@ -12,6 +12,7 @@ import Notifications from "./Notifications/Notifications";
 
 import Mesages from "./Messages/Messages";
 
+import Tabs from "./Tabs/Tabs";
 import "./Ui.less";
 
 class UI extends React.Component {
@@ -25,6 +26,9 @@ class UI extends React.Component {
           <Route path='/ui/loadings' component={Loadings}/>
           <Route path='/ui/notifications' component={Notifications}/>
           <Route path='/ui/messages' component={Mesages}/>
+          <Route path='/ui/tabs' component={Tabs}/>
+
+          
         </Switch>
       </div>
     );
