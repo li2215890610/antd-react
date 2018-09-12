@@ -24,9 +24,7 @@ class Tabs extends React.Component {
           </Row>
         </Card>
         <Card title='自定义Tab页签' className='card'>
-          <Row style={{width:'500px'}}>
-            <CustomDynamicAddTabs/>
-          </Row>
+          <CustomDynamicAddTabs/>
         </Card>
         
       </div>

@@ -5,7 +5,7 @@ import { Tabs, Button, Radio, Row, Col } from "antd";
 const TabPane = Tabs.TabPane;
 
 class CustomDynamicAddTabs extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
 
     const panes = [
@@ -16,13 +16,13 @@ class CustomDynamicAddTabs extends React.Component {
     this.state = {
       activeKey: panes[0].key,
       panes,
-      mode:"top",
+      mode: "top",
     }
   }
 
 
   handleModeChange = (e) => {
-    this.setState({ mode:e.target.value})
+    this.setState({ mode: e.target.value })
   }
 
 
@@ -30,14 +30,14 @@ class CustomDynamicAddTabs extends React.Component {
   changeCallback = (activeKey) => {
     this.setState({ activeKey });
     console.log(activeKey);
-    
+
   }
 
   onEdit = (targetKey, action) => {
     //调用 remove
     this[action](targetKey);
 
-    console.log(action,targetKey);
+    console.log(action, targetKey);
   }
 
   add = () => {
@@ -45,8 +45,8 @@ class CustomDynamicAddTabs extends React.Component {
 
     const activeKey = `${panes.length + 1}`;
 
-    panes.push({ title: `Tab ${activeKey}`, content: `Content of Tab Pane${(panes.length+1)}`, key: activeKey });
-    
+    panes.push({ title: `Tab ${activeKey}`, content: `Content of Tab Pane${(panes.length + 1)}`, key: activeKey });
+
     this.setState({ panes, activeKey });
   }
 
@@ -58,9 +58,9 @@ class CustomDynamicAddTabs extends React.Component {
         lastIndex = i - 1;
       }
     });
-    
+
     panes = panes.filter(pane => pane.key !== targetKey);
-    
+
     if (lastIndex >= 0 && activeKey === targetKey) {
       activeKey = panes[lastIndex].key;
     }
@@ -71,9 +71,9 @@ class CustomDynamicAddTabs extends React.Component {
   render() {
 
     let { activeKey, panes, mode } = this.state;
-    
+
     return (
-      <div> 
+      <div>
 
         <Radio.Group onChange={this.handleModeChange.bind(this)} value={mode} style={{ marginBottom: 8 }}>
           <Radio.Button value="top">top</Radio.Button>
@@ -83,7 +83,7 @@ class CustomDynamicAddTabs extends React.Component {
         <div style={{ marginBottom: 16 }}>
           <Button onClick={this.add}>添加标签页</Button>
         </div>
-        <Row>
+        <Row style={{width:'500px'}}>
           <Tabs
             hideAdd
             number='100'
