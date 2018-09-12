@@ -21,7 +21,7 @@ class ErrorNotification extends React.Component {
   render() {
     return (
       <div>
-        <Button type='primary' onClick={this.onClick}>Error</Button>
+        <Button type='danger' onClick={this.onClick}>Error</Button>
       </div>
     );
   }

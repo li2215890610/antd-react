@@ -21,7 +21,7 @@ class InfoNotification extends React.Component {
   render() {
     return (
       <div>
-        <Button type='primary' onClick={this.onClick}>Info</Button>
+        <Button type='dashed' onClick={this.onClick}>Info</Button>
       </div>
     );
   }

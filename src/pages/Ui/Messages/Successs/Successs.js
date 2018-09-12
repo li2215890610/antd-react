@@ -11,7 +11,7 @@ class Successs extends React.Component {
     render(){
         return (
             <div>
-              <Button type="primary" onClick={this.showMessage}>Successs</Button>
+              <Button  onClick={this.showMessage}>Successs</Button>
             </div>
         );
     }

@@ -11,7 +11,7 @@ class info extends React.Component {
     render(){
         return (
             <div>
-              <Button type="primary" onClick={this.showMessage}>info</Button>
+              <Button type="dashed" onClick={this.showMessage}>info</Button>
             </div>
         );
     }

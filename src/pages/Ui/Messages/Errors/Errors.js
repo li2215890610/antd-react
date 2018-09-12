@@ -11,7 +11,7 @@ class Errors extends React.Component {
     render(){
         return (
             <div>
-              <Button type="primary" onClick={this.showMessage}>error</Button>
+              <Button type="danger" onClick={this.showMessage}>error</Button>
             </div>
         );
     }

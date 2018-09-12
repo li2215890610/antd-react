@@ -21,7 +21,7 @@ class SuccessNotification extends React.Component {
   render() {
     return (
       <div>
-        <Button type='primary' onClick={this.onClick}>Success</Button>
+        <Button onClick={this.onClick}>Success</Button>
       </div>
     );
   }
