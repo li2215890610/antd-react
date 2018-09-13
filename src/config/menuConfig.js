@@ -33,14 +33,14 @@ const menuList = [
               "title": 'Tab页签',
               "key": '/ui/tabs',
           },
-          {
-              "title": '图片画廊',
-              "key": '/ui/gallery',
-          },
-          {
-              "title": '轮播图',
-              "key": '/ui/carousel',
-          }
+        //   {
+        //       "title": '图片画廊',
+        //       "key": '/ui/gallery',
+        //   },
+        //   {
+        //       "title": '轮播图',
+        //       "key": '/ui/carousel',
+        //   }
       ]
   },
   {
@@ -50,11 +50,11 @@ const menuList = [
       "children": [
           {
               "title": '登录',
-              "key": '/admin/form/login',
+              "key": '/form/login',
           },
           {
               "title": '注册',
-              "key": '/admin/form/reg',
+              "key": '/form/reg',
           }
       ]
   },

@@ -27,8 +27,6 @@ class UI extends React.Component {
           <Route path='/ui/notifications' component={Notifications}/>
           <Route path='/ui/messages' component={Mesages}/>
           <Route path='/ui/tabs' component={Tabs}/>
-
-          
         </Switch>
       </div>
     );

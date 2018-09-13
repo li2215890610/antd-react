@@ -8,6 +8,8 @@ import Home from "../../pages/Home/Home";
 
 import Ui from "../../pages/Ui/Ui";
 
+import Form from "../../pages/Form/Form";
+
 import NoMatch from "../../pages/NoMatch/NoMatch";
 
 const { Content } = Layout
@@ -27,6 +29,7 @@ class Contents extends React.Component{
             <Switch>
               <Route  path='/home' component={Home}/>
               <Route  path='/ui' component={Ui}/>
+              <Route  path='/form' component={Form}/>
 
               <Route  component={NoMatch}/>
             </Switch>
