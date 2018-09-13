@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card, Row, Col } from "antd";
+import { Card, Row } from "antd";
 
 import BasicsTabs from "./BasicsTabs/BasicsTabs";
 

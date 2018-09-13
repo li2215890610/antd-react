@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Tabs, Button, Radio, Row, Col } from "antd";
+import { Tabs, Button, Radio, Row } from "antd";
 
 const TabPane = Tabs.TabPane;
 
