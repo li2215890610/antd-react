@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Form, Input, Button} from "antd";
+import { Form, Input, Button, Icon, Checkbox} from "antd";
 
 import Message from "../../../../utlis/MessageUtlis";
 
@@ -42,7 +42,7 @@ class LevelFrom extends React.Component {
                   }
                 ]
               })(
-                <Input placeholder="请输入用户名" />
+                <Input prefix={<Icon type="user"/>} placeholder="请输入用户名" />
               )
             }
           </FormItem>
@@ -54,14 +54,29 @@ class LevelFrom extends React.Component {
                   {
                     required: true,
                     message: "账号为必填项",
-                    min:6
+                  },
+                  {
+                    min:2,
+                    max:4,
+                    message:"最小长度2,最大长度4"
                   }
                 ]
 
               })(
-                <Input placeholder="请输入账号" />
+                <Input prefix={<Icon type="lock"/>} placeholder="请输入账号" />
               )
             }
+          </FormItem>
+          <FormItem>
+            {
+              getFieldDecorator("remember", {
+                valuePropName: 'checked',
+                initialValue: true,
+              })(
+                <Checkbox>记住密码</Checkbox>
+              )
+            }
+            <a href="#">忘记密码</a>
           </FormItem>
           <FormItem>
             <Button type="primary" htmlType="submit">确定</Button>

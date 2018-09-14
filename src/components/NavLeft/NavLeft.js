@@ -53,14 +53,26 @@ class NavLeft extends React.Component {
       dataSource.map((menu, index) => {
         if (menu.children) {
           return (
-            <SubMenu key={menu.key} title={<span><Icon type={menu.icon} /><span>{menu.title}</span></span>}>
-              {this.renderMenu(menu.children)}
+            <SubMenu key={menu.key} title={
+                <span>
+                  <Icon type={menu.icon} />{menu.title}
+                </span>
+              }>
+              {this.renderMenu(menu.children)
+            }
             </SubMenu>
           )
         } else {
-          return (<Menu.Item key={menu.key}>{<span><Icon type={menu.icon} /><span>
-            <Link className='link_font_color' to={menu.key}>{menu.title}</Link>
-          </span></span>}</Menu.Item>)
+          return (<Menu.Item key={menu.key}>{
+            <span>
+              {
+                 menu.icon ? <Icon type={menu.icon} /> : ''
+              }
+              <span>
+              <Link className='link_font_color' to={menu.key}>{menu.title}</Link>
+              </span>
+            </span>
+          }</Menu.Item>)
         }
       })
     )
