@@ -8,7 +8,7 @@ import LevelFrom from "./LevelFrom/LevelFrom";
 
 import "../Form.less";
 
-class Form extends React.Component{
+class Login extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
@@ -30,4 +30,4 @@ class Form extends React.Component{
   }
 }
 
-export default Form;
+export default Login;

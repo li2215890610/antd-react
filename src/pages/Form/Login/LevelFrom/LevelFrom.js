@@ -42,7 +42,7 @@ class LevelFrom extends React.Component {
                   }
                 ]
               })(
-                <Input prefix={<Icon type="user"/>} placeholder="请输入用户名" />
+                <Input prefix={<Icon type="user"/>} style={{width:'300px'}} placeholder="请输入用户名" />
               )
             }
           </FormItem>
@@ -63,7 +63,7 @@ class LevelFrom extends React.Component {
                 ]
 
               })(
-                <Input prefix={<Icon type="lock"/>} placeholder="请输入账号" />
+                <Input prefix={<Icon type="lock"/>} style={{width:'300px'}} placeholder="请输入账号" />
               )
             }
           </FormItem>
@@ -76,7 +76,7 @@ class LevelFrom extends React.Component {
                 <Checkbox>记住密码</Checkbox>
               )
             }
-            <a href="#">忘记密码</a>
+            <a href="">忘记密码</a>
           </FormItem>
           <FormItem>
             <Button type="primary" htmlType="submit">确定</Button>
