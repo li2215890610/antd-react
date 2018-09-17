@@ -2,24 +2,63 @@ import React from "react";
 
 import "../Form.less";
 
-import { Card, Form, Input, Checkbox, Radio, Select, Switch, DatePicker, TimePicker, Upload, Icon, Button } from "antd";
+import { Card, Form, Input, Checkbox, Radio, Select, Switch, DatePicker, TimePicker, Upload, Icon, Button, InputNumber } from "antd";
 
 const FormItem = Form.Item;
+
+const RadioGroup = Radio.Group;
+
+const Option = Select.Option;
+
 
 class Register extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-
+      radioValue: 1,
+      age: 18,
+      userSeate:"",
+      userHobby:[2,3]
     }    
   }
 
-  handleSubmit = (e) =>{
+  handleSubmit = (e) => {
     e.preventDefault();
 
   }
 
+  handleChangeRadioGroup = (e) => {
+    this.setState({
+      radioValue: e.target.value,
+    })
+  }
+
+  handleChangeAge = ( e ) => {
+
+    console.log(e);
+    
+    this.setState({
+      age: e
+    })
+  }
+
+  handleChangeUserSeate = ( e )=>{
+    console.log(e);
+    this.setState({
+      userSeate:e
+    })
+    
+  }
+
+  handleChangeUserHobby = (e)=>{
+    this.setState({
+      userHobby:e
+    })
+  }
+  
   render (){
+
+    let { radioValue, age, userSeate, userHobby} = this.state;
 
     let { getFieldDecorator } = this.props.form;
 
@@ -33,6 +72,7 @@ class Register extends React.Component{
         sm:20
       }
     }
+    
     
     return(
       <div>
@@ -68,11 +108,66 @@ class Register extends React.Component{
                   )
                 }
               </FormItem>
+              <FormItem label="性别" {...FormItemLayout}>
+                {
+                  getFieldDecorator("sex", {
+                    initialValue: "1",
+                    
+                  })(
+                    <RadioGroup onChange={this.handleChangeRadioGroup} value={radioValue} style={{width:'300px'}}>
+                      <Radio value={1}>男</Radio>
+                      <Radio value={2}>女</Radio>
+                      <Radio value={3}>不男不女</Radio>
+                    </RadioGroup>
+                  )
+                }
+              </FormItem>
+              <FormItem label="年龄" {...FormItemLayout}>
+                {
+                  getFieldDecorator("age", {
+                    initialValue: age,
+                    
+                  })(
+                    <InputNumber min={1} max={30}  onChange={this.handleChangeAge} style={{width:'300px'}}/>
+                  )
+                }
+              </FormItem>
 
-
-
-
-
+              <FormItem label="当前状态" {...FormItemLayout}>
+                {
+                  getFieldDecorator("seate", {
+                    initialValue: userSeate,
+                    
+                  })(
+                   <Select onChange={this.handleChangeUserSeate} style={{width:'300px'}}>
+                     <Option value="1">1</Option>
+                     <Option value="2">2</Option>
+                     <Option value="3">3</Option>
+                     <Option value="4">4</Option>
+                     <Option value="5">5</Option>
+                     <Option value="6">6</Option>
+                   </Select>
+                  )
+                }
+              </FormItem>
+              <FormItem label="爱好" {...FormItemLayout}>
+                {
+                  getFieldDecorator("hobby", {
+                    initialValue: userHobby,
+                    
+                  })(
+                   <Select mode="multiple"  onChange={this.handleChangeUserHobby} style={{width:'300px'}}>
+                     <Option value="1">1</Option>
+                     <Option value="2">2</Option>
+                     <Option value="3">3</Option>
+                     <Option value="4">4</Option>
+                     <Option value="5">5</Option>
+                     <Option value="6">6</Option>
+                   </Select>
+                  )
+                }
+              </FormItem>
+      
 
 
 
