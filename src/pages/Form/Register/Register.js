@@ -1,5 +1,9 @@
 import React from "react";
 
+import moment  from "moment";
+
+import locale from 'antd/lib/date-picker/locale/zh_CN';
+
 import "../Form.less";
 
 import { Card, Form, Input, Checkbox, Radio, Select, Switch, DatePicker, TimePicker, Upload, Icon, Button, InputNumber } from "antd";
@@ -18,7 +22,10 @@ class Register extends React.Component{
       radioValue: 1,
       age: 18,
       userSeate:"",
-      userHobby:[2,3]
+      userHobby:[2,3],
+      checkedSwitch:true,
+      isMarried:"",
+      birthday:moment("2018-01-01")
     }    
   }
 
@@ -56,9 +63,14 @@ class Register extends React.Component{
     })
   }
   
+  handleChangeSwitch = (checked) =>{
+    this.setState({
+      isMarried:checked
+    })
+  }
   render (){
 
-    let { radioValue, age, userSeate, userHobby} = this.state;
+    let { radioValue, age, userSeate, userHobby, checkedSwitch, isMarried, birthday} = this.state;
 
     let { getFieldDecorator } = this.props.form;
 
@@ -167,8 +179,30 @@ class Register extends React.Component{
                   )
                 }
               </FormItem>
-      
 
+              <FormItem label="是否已婚" {...FormItemLayout}>
+                {
+                  getFieldDecorator("checked", {
+                    initialValue: isMarried,
+                    
+                  })(
+                    <Switch onChange={this.handleChangeSwitch}/>
+             
+                  )
+                }
+              </FormItem>    
+
+              <FormItem label="生日" {...FormItemLayout}>
+                {
+                  getFieldDecorator("birthday", {
+                    initialValue: birthday,
+                    
+                  })(
+                    <DatePicker locale={locale} showTime format="YYYY-MM-DD"/>
+             
+                  )
+                }
+              </FormItem>   
 
 
               <FormItem>
