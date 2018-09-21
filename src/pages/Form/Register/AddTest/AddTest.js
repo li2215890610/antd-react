@@ -6,6 +6,8 @@ import locale from 'antd/lib/date-picker/locale/zh_CN';
 
 import "../../Form.less";
 
+import Message from "../../../../utlis/MessageUtlis";
+
 import { Card, Form, Input, Checkbox, Radio, Select, Switch, DatePicker, TimePicker, Upload, Icon, Button, InputNumber,message } from "antd";
 
 const FormItem = Form.Item;
@@ -20,7 +22,6 @@ class AddTest extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      radioValue: 1,
       age: 18,
       userSeate:"",
       userHobby:[2,3],
@@ -34,38 +35,12 @@ class AddTest extends React.Component{
 
   handleSubmit = (e) => {
     e.preventDefault();
-
-  }
-
-  handleChangeRadioGroup = (e) => {
-    this.setState({
-      radioValue: e.target.value,
-    })
-  }
-
-  handleChangeAge = ( e ) => {    
-    this.setState({
-      age: e
-    })
-  }
-
-  handleChangeUserSeate = ( e )=>{
-    console.log(e);
-    this.setState({
-      userSeate:e
-    })
-    
-  }
-
-  handleChangeUserHobby = (e)=>{
-    this.setState({
-      userHobby:e
-    })
-  }
-  
-  handleChangeSwitch = (checked) =>{
-    this.setState({
-      isMarried:checked
+    let userInfo =  this.props.form.getFieldsValue();
+    console.log(userInfo);
+    this.props.form.validateFields((err,data)=>{
+     if (!err) {
+       Message.Messages('success',`${userInfo.userName},恭喜你通过验证,当前密码为${userInfo.userPwd}`,2)
+     }
     })
   }
 
@@ -108,7 +83,7 @@ class AddTest extends React.Component{
 
     let { radioValue, age, userSeate, userHobby, isMarried, birthday, address, timePicker, imageUrl, loading} = this.state;
 
-    let { getFieldDecorator } = this.props.form;
+    const { getFieldDecorator } = this.props.form;
 
     let FormItemLayout = {
       labelCol:{
@@ -124,7 +99,6 @@ class AddTest extends React.Component{
     const uploadButton = (
       <div>
         <Icon type={loading ? 'loading' : 'plus'} />
-        <div className="ant-upload-text">Upload</div>
       </div>
     );
 
@@ -136,7 +110,7 @@ class AddTest extends React.Component{
               <FormItem label="用户名" {...FormItemLayout}>
                 {
                   getFieldDecorator("userName", {
-                    initialValue: "张三",
+                    initialValue: "",
                     rules: [
                       {
                         required: true,
@@ -151,11 +125,15 @@ class AddTest extends React.Component{
               <FormItem label="密码" {...FormItemLayout}>
                 {
                   getFieldDecorator("userPwd", {
-                    initialValue: "张三",
+                    initialValue: "",
                     rules: [
                       {
                         required: true,
                         message: "密码为必填项",
+                      },{
+                        min:2,
+                        max:5,
+                        message:"最小长度为两位,最大长度为五位"
                       }
                     ]
                   })(
@@ -166,10 +144,10 @@ class AddTest extends React.Component{
               <FormItem label="性别" {...FormItemLayout}>
                 {
                   getFieldDecorator("sex", {
-                    initialValue: "1",
+                    initialValue: 1,
                     
                   })(
-                    <RadioGroup onChange={this.handleChangeRadioGroup} value={radioValue} style={{width:'300px'}}>
+                    <RadioGroup style={{width:'300px'}}>
                       <Radio value={1}>男</Radio>
                       <Radio value={2}>女</Radio>
                       <Radio value={3}>不男不女</Radio>
@@ -180,10 +158,20 @@ class AddTest extends React.Component{
               <FormItem label="年龄" {...FormItemLayout}>
                 {
                   getFieldDecorator("age", {
-                    initialValue: age,
-                    
+                    initialValue: '',
+                    rules: [
+                      {
+                        required: true,
+                        message: "年龄必填项",
+                      }
+                    ]
                   })(
-                    <InputNumber min={1} max={30}  onChange={this.handleChangeAge} style={{width:'300px'}}/>
+                    <InputNumber 
+                      min={0}
+                      max={30} 
+                      style={{width:'300px'}}
+                      placeholder="请填写年龄"
+                    />
                   )
                 }
               </FormItem>
@@ -191,10 +179,17 @@ class AddTest extends React.Component{
               <FormItem label="当前状态" {...FormItemLayout}>
                 {
                   getFieldDecorator("seate", {
-                    initialValue: userSeate,
+                    initialValue: '',
+                    rules: [
+                      {
+                        required: true,
+                        message: "当前状态必填项",
+                      }
+                    ]                   
                     
                   })(
-                   <Select onChange={this.handleChangeUserSeate} style={{width:'300px'}}>
+                   <Select placeholder='请选择状态' style={{width:'300px'}}>
+                     <Option value="">请选择状态</Option>
                      <Option value="1">1</Option>
                      <Option value="2">2</Option>
                      <Option value="3">3</Option>
@@ -208,10 +203,15 @@ class AddTest extends React.Component{
               <FormItem label="爱好" {...FormItemLayout}>
                 {
                   getFieldDecorator("hobby", {
-                    initialValue: userHobby,
-                    
+                    initialValue: [],
+                    rules: [
+                      {
+                        required: true,
+                        message: "爱好必填项",
+                      }
+                    ]  
                   })(
-                   <Select mode="multiple"  onChange={this.handleChangeUserHobby} style={{width:'300px'}}>
+                   <Select placeholder='请选择爱好' mode="multiple" style={{width:'300px'}}>
                      <Option value="1">1</Option>
                      <Option value="2">2</Option>
                      <Option value="3">3</Option>
@@ -226,55 +226,62 @@ class AddTest extends React.Component{
               <FormItem label="是否已婚" {...FormItemLayout}>
                 {
                   getFieldDecorator("checked", {
-                    initialValue: isMarried,
-                    
+                    initialValue: false,
                   })(
-                    <Switch onChange={this.handleChangeSwitch}/>
-             
+                    <Switch />
                   )
                 }
               </FormItem>    
 
-              <FormItem label="生日" {...FormItemLayout}>
+              {/* <FormItem label="生日" {...FormItemLayout}>
                 {
                   getFieldDecorator("birthday", {
-                    initialValue: birthday,
+                    initialValue: '',
                     
                   })(
                     <DatePicker locale={locale} showTime format="YYYY-MM-DD"/>
              
                   )
                 }
-              </FormItem>   
+              </FormItem>    */}
 
               <FormItem label="联系地址" {...FormItemLayout}>
                 {
                   getFieldDecorator("address", {
-                    initialValue: address,
-                    
+                    initialValue: '',
+                    rules: [
+                      {
+                        required: true,
+                        message: "爱好必填项",
+                      }
+                    ]  
                   })(
                     <TextArea autosize={true}/>
-             
                   )
                 }
               </FormItem>   
 
-              <FormItem label="早起时间" {...FormItemLayout}>
+              {/* <FormItem label="早起时间" {...FormItemLayout}>
                 {
                   getFieldDecorator("timePicker", {
-                    initialValue: timePicker,
-                    
+                    initialValue: '',
                   })(
                     <TimePicker />
                   )
                 }
-              </FormItem> 
+              </FormItem>  */}
 
               <FormItem label="头像" {...FormItemLayout}>
                 {
                   getFieldDecorator("imageUrl", {
                     initialValue: imageUrl,
-                    
+                    rules: [
+                      {
+                        required: true,
+                        message: "头像为必上传",
+                      }
+                    ]  
+
                   })(
                     <Upload
                       listType="picture-card"
