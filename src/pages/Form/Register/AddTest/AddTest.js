@@ -22,13 +22,6 @@ class AddTest extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      age: 18,
-      userSeate:"",
-      userHobby:[2,3],
-      isMarried:false,
-      birthday:moment("2018-01-01"),
-      address:"北京市恒通国际创新园C9蓝色光标北门",
-      timePicker:"",
       imageUrl:"",
     }    
   }
@@ -81,7 +74,7 @@ class AddTest extends React.Component{
 
   render (){
 
-    let { radioValue, age, userSeate, userHobby, isMarried, birthday, address, timePicker, imageUrl, loading} = this.state;
+    let {  imageUrl, loading} = this.state;
 
     const { getFieldDecorator } = this.props.form;
 
@@ -223,9 +216,20 @@ class AddTest extends React.Component{
                 }
               </FormItem>
 
-              <FormItem label="是否已婚" {...FormItemLayout}>
+
+              <FormItem label="是否方便" {...FormItemLayout}>
                 {
                   getFieldDecorator("checked", {
+                    initialValue: false,
+                  })(
+                    <Checkbox ></Checkbox>
+                    )
+                }
+              </FormItem>    
+
+              <FormItem label="是否已婚" {...FormItemLayout}>
+                {
+                  getFieldDecorator("switchs", {
                     initialValue: false,
                   })(
                     <Switch />
