@@ -294,7 +294,7 @@ class AddTest extends React.Component{
                       beforeUpload={this.beforeUpload}
                       onChange={this.handleChange}
                     >
-                      {imageUrl ? <img src={imageUrl}/> : uploadButton}
+                      {imageUrl ? <img alt=''  src={imageUrl}/> : uploadButton}
                     </Upload>
                   )
                 }

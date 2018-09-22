@@ -25,24 +25,25 @@ class UpdateTest extends React.Component{
       imageUrl:"",
     }    
   }
-
-  componentWillMount = () =>{
-
+ 
+  componentDidMount = () =>{
     this.props.form.setFieldsValue( {
-      userName:"2222",
+      userName:"444",
       userPwd:"2222",
-      sex:2,
+      sex:3,
       age:18,
       seate:1,
       hobby:[2,4],
       address:"北京",
-      switchs:true,
-      checked:true
-    } ,( )=>{
-      console.log("初始化组件成功")
-    })
+      switchs: true,
+      checked: true,
+      imageUrl:"https://www.baidu.com/img/bd_logo1.png",
+    },()=>{
+      this.setState({
+        imageUrl:"https://www.baidu.com/img/bd_logo1.png",
+      })
+    }) 
   }
-
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -121,7 +122,7 @@ class UpdateTest extends React.Component{
               <FormItem label="用户名" {...FormItemLayout}>
                 {
                   getFieldDecorator("userName", {
-                    initialValue: "",
+                    initialValue: "userName",
                     rules: [
                       {
                         required: true,
@@ -130,7 +131,7 @@ class UpdateTest extends React.Component{
                     ]
                   })(
                     <div>
-                      <Input prefix={<Icon type="user"/>} style={{width:'300px'}} placeholder="请输入用户名" />
+                      <Input type="text" prefix={<Icon type="user"/>} style={{width:'300px'}} placeholder="请输入用户名" />
                     </div>
                   )
                 }
@@ -158,7 +159,6 @@ class UpdateTest extends React.Component{
                 {
                   getFieldDecorator("sex", {
                     initialValue: 1,
-                    
                   })(
                     <RadioGroup style={{width:'300px'}}>
                       <Radio value={1}>男</Radio>
@@ -240,17 +240,17 @@ class UpdateTest extends React.Component{
               <FormItem label="是否方便" {...FormItemLayout}>
                 {
                   getFieldDecorator("checked", {
-                    initialValue: false,
+                    valuePropName: 'checked',
                   })(
-                    <Checkbox ></Checkbox>
+                    <Checkbox />
                     )
                 }
               </FormItem>    
 
               <FormItem label="是否已婚" {...FormItemLayout}>
                 {
-                  getFieldDecorator("switchs", {
-                    initialValue: false,
+                  getFieldDecorator("switchs",{
+                    valuePropName: 'checked',
                   })(
                     <Switch />
                   )
@@ -314,7 +314,7 @@ class UpdateTest extends React.Component{
                       beforeUpload={this.beforeUpload}
                       onChange={this.handleChange}
                     >
-                      {imageUrl ? <img src={imageUrl}/> : uploadButton}
+                      {imageUrl ? <img alt='' src={imageUrl}/> : uploadButton}
                     </Upload>
                   )
                 }
