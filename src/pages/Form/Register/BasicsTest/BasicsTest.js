@@ -171,7 +171,8 @@ class BasicsTest extends React.Component{
         <div className="ant-upload-text"></div>
       </div>
     );
-
+    
+    console.log(this.props.data);
     
     return(
       <div>

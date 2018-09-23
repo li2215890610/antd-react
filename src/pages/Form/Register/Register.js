@@ -28,13 +28,13 @@ class Register extends React.Component{
           <Card title="注册表单" className="card">
             <Tabs defaultActiveKey="3" onChange={this.handleChangeTabs} animated={false}>
               <TabPane tab="默认演示" key="1">
-                <BasicsTest/>
+                <BasicsTest data="1"/>
               </TabPane>
               <TabPane tab="antd方法演示新增" key="2">
-                <AddTest/>
+                <AddTest data="2"/>
               </TabPane>
               <TabPane tab="antd方法演示更新" key="3">
-                <UpdateTest/>
+                <UpdateTest data="3"/>
               </TabPane>
             </Tabs>
           </Card>

@@ -95,7 +95,8 @@ class AddTest extends React.Component{
       </div>
     );
 
-    
+    console.log(this.props.data);
+
     return(
       <div>
           <Card title="注册表单" className="card">

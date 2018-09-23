@@ -25,7 +25,7 @@ class UpdateTest extends React.Component{
       imageUrl:"",
     }    
   }
- 
+  
   componentDidMount = () =>{
     this.props.form.setFieldsValue( {
       userName:"444",
@@ -91,6 +91,7 @@ class UpdateTest extends React.Component{
 
   }
 
+  
   render (){
 
     let {  imageUrl, loading} = this.state;
@@ -114,6 +115,7 @@ class UpdateTest extends React.Component{
       </div>
     );
 
+    console.log(this.props.data);
     
     return(
       <div>
@@ -122,7 +124,7 @@ class UpdateTest extends React.Component{
               <FormItem label="用户名" {...FormItemLayout}>
                 {
                   getFieldDecorator("userName", {
-                    initialValue: "userName",
+                    initialValue: "",
                     rules: [
                       {
                         required: true,

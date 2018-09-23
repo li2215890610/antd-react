@@ -10,6 +10,8 @@ import Ui from "../../pages/Ui/Ui";
 
 import Form from "../../pages/Form/Form";
 
+import Table from "../../pages/Table/Table";
+
 import NoMatch from "../../pages/NoMatch/NoMatch";
 
 const { Content } = Layout
@@ -30,7 +32,7 @@ class Contents extends React.Component{
               <Route  path='/home' component={Home}/>
               <Route  path='/ui' component={Ui}/>
               <Route  path='/form' component={Form}/>
-
+              <Route  path='/table' component={Table}/>
               <Route  component={NoMatch}/>
             </Switch>
           </Content>
