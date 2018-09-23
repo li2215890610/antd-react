@@ -1,6 +1,6 @@
 import React from "react";
 
-import EmptyListContent from '../../../components/EmptyListContent/EmptyListContent';
+import DynamicTable from "./DynamicTable/DynamicTable";
 
 import { Card, Table } from "antd";
 
@@ -9,7 +9,6 @@ class BasicTable extends React.Component {
     super(props)
     this.state = {
       dataSource:[],
-      dataSourceDynamic:[]
     }
   }
 
@@ -56,7 +55,7 @@ class BasicTable extends React.Component {
   }
 
   render() {
-    let { dataSource, dataSourceDynamic} = this.state;
+    let { dataSource} = this.state;
     
     const columns = [
       {
@@ -96,21 +95,7 @@ class BasicTable extends React.Component {
           />
         </Card>
         <Card title="动态数据表格" style={{marginTop:'30px'}}>
-          <Table
-            dataSource={dataSourceDynamic}
-            columns={columns}
-            pagination={false}
-            locale={{
-              emptyText:(
-                <EmptyListContent
-                  loaded={ true } 
-                  errored={ true }
-                  errorContent={<div>加载失败，<a>重试</a></div>}
-                  emptyContent={ "all" ? <div>还没有商品？ <a href=''>立即添加</a></div> : <div>暂无相关商品</div>}
-                />
-              )
-            }}
-          />
+          <DynamicTable/>
         </Card>
       </div>
     )
