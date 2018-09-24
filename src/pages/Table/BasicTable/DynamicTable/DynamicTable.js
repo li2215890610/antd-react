@@ -1,6 +1,7 @@
 import React from "react";
 
-import { Table } from "antd";
+import { Table, Button, Modal
+ } from "antd";
 
 import EmptyListContent from '../../../../components/EmptyListContent/EmptyListContent';
 
@@ -8,36 +9,41 @@ import httpRequest from "../../../../servers/request";
 
 import MessageUtlis from "../../../../utlis/MessageUtlis";
 
+import Pagination from "../../../../utlis/Pagination";
+
 class DynamicTable extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       dataSourceDynamic: [],
-      page: 1,
       selectedRowKeys: [],
-      selectedRowKey: []
+      selectedRowKey: [],
+      loading: false,
+      sortedInfo: true,
     }
   }
+
+  page = 1
 
   limit = 10
 
   componentWillMount = ()=>{
-    let { limit } = this;
+    let { limit, page } = this;
     httpRequest.HttpGet({url:'/table/list',data:{
       params:{
-        page: 1,
+        page: page,
         page_size: limit
       }
     }}).then((res)=>{
 
       if (res.code === 0) {
 
-        res.result.map((item,index)=>{
+        res.result.list.map((item,index)=>{
            return item.key = index
         })
-
         this.setState({
-          dataSourceDynamic:res.result
+          dataSourceDynamic:res.result.list,
+          pagination:Pagination.Pagination(res,this.handlePaginationChange,this.handlePaginationShowSizeChange)
         })
       }
     }).then((err)=>{
@@ -49,12 +55,13 @@ class DynamicTable extends React.Component {
 
   //点击行
   handleClickRow = ( item, index)=>{
+
     MessageUtlis.Messages('success',`点击了${item.userName}`,2)
   }
 
   onChangeRowSelection = ( selectedRowKeys, selectedRows)=>{
 
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    console.log(`selectedRowKeys:`, selectedRowKeys, 'selectedRows: ', selectedRows);
 
     let selectedRowKey = [];
 
@@ -64,16 +71,62 @@ class DynamicTable extends React.Component {
         selectedRowKey.push(element)
       }
     }
-
+    
     this.setState({
       selectedRowKeys,
-      selectedRowKey
+      selectedRowKey: selectedRows
     })
 
   }
 
+  handleDelete = () => {
+    this.setState({ loading: true });
+    Modal.confirm({
+      title: '提示',
+      content: '确定删除?',
+      onOk:()=> {
+        setTimeout(() => {
+          this.setState({
+            selectedRowKeys: [],
+            selectedRowKey:[],
+            loading: false,
+          });
+        }, 1000);
+      },
+      onCancel:()=> {
+        this.setState({
+          loading: false,
+        });
+      },
+    })
+
+  }
+
+  handlePaginationChange = (current)=>{
+    this.setState({
+      page: current,
+    })
+    
+  }
+
+  handlePaginationShowSizeChange = ( current, page_size)=>{
+    console.log(current, page_size);
+    this.setState({
+      page :current, 
+      page_size
+    })
+  }
+
+  handleGridSort = (pagination, filters, sorter) =>{
+    console.log(pagination, filters, sorter);
+    this.setState({
+      sortedInfo: ! this.state.sortedInfo
+    })
+  }
+
   render() {
-    let { dataSourceDynamic, selectedRowKeys} = this.state;
+    let { dataSourceDynamic, selectedRowKeys, loading, pagination, sortedInfo } = this.state;
+    
     let configState  = {
         '1':'咸鱼一条',
         '2':'风华浪子',
@@ -95,11 +148,14 @@ class DynamicTable extends React.Component {
       {
         title: "id",
         key:"id",
+        fixed: 'left',
         dataIndex: "id",
       }, {
         title: "用户名",
         key:"userName",
         dataIndex: "userName",
+        sorter: true,
+        sortOrder: sortedInfo ? 'ascend':'descend',
       }, {
         title: "性别",
         key:"sex",
@@ -150,18 +206,36 @@ class DynamicTable extends React.Component {
       }
     ];
 
-    const rowSelection = {
+    let rowSelection = {
       type: "checkbox",
       selectedRowKeys: selectedRowKeys,
       onChange: this.onChangeRowSelection
     }
+
+    const hasSelected = selectedRowKeys.length > 0;
+
     return (
       <div>
+          <div style={{ marginBottom: 16 }}>
+            <Button
+              type="primary"
+              onClick={this.handleDelete}
+              disabled={!hasSelected}
+              loading={loading}
+            >
+              删除
+            </Button>
+            <span style={{ marginLeft: 8 }}>
+              {hasSelected ? `当前选中 ${selectedRowKeys.length} 个数据` : ''}
+            </span>
+          </div>
           <Table
+            scroll={{ x: 240 }} // 表头固定 y轴
             rowSelection={rowSelection}
             dataSource={dataSourceDynamic}
             columns={columns}
-            pagination={false}
+            pagination={pagination}
+            onChange={this.handleGridSort}
             onRow={(record,index) => {
               //record行的数据   index 索引值
               return {

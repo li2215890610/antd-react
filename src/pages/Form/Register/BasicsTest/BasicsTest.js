@@ -2,9 +2,6 @@ import React from "react";
 
 import moment  from "moment";
 
-import locale from 'antd/lib/date-picker/locale/zh_CN';
-
-import 'moment/locale/zh-cn';
 
 import "../../Form.less";
 
@@ -234,11 +231,11 @@ class BasicsTest extends React.Component{
               </FormItem>   
 
               <FormItem label="生日" {...FormItemLayout}>
-                <DatePicker locale={locale} showTime format="YYYY-MM-DD" value={birthday}  onChange={this.handleChangeBirthday}/>
+                <DatePicker showTime format="YYYY-MM-DD" value={birthday}  onChange={this.handleChangeBirthday}/>
               </FormItem>   
 
               <FormItem label="早起时间" {...FormItemLayout}>
-                <TimePicker placeholder="请选择时间" time={timePicker}    onChange={this.handleChangeTimePicker}/>
+                <TimePicker  time={timePicker}  onChange={this.handleChangeTimePicker}/>
               </FormItem> 
 
               <FormItem label="头像" {...FormItemLayout}>
