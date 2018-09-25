@@ -207,7 +207,6 @@ class DynamicTable extends React.Component {
     ];
 
     let rowSelection = {
-      type: "checkbox",
       selectedRowKeys: selectedRowKeys,
       onChange: this.onChangeRowSelection
     }
@@ -249,7 +248,6 @@ class DynamicTable extends React.Component {
                 },
               }
             }}
-            rowSelection={rowSelection}
             locale={{
               emptyText:(
                 <EmptyListContent

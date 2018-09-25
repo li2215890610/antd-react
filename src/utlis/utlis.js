@@ -18,5 +18,10 @@ export default {
       second = second < 10 ? ('0' + second) : second;
       return `${y}-${m}-${d}  ${h} : ${minute} : ${second}`
     }
-  }
+  },
+  formateTime(time){
+    if(!time)return '';
+    let date = new Date(time);
+    return date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+},
 }

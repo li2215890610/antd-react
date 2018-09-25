@@ -12,6 +12,8 @@ import Form from "../../pages/Form/Form";
 
 import Table from "../../pages/Table/Table";
 
+import City from "../../pages/City/City";
+
 import NoMatch from "../../pages/NoMatch/NoMatch";
 
 const { Content } = Layout
@@ -33,6 +35,7 @@ class Contents extends React.Component{
               <Route  path='/ui' component={Ui}/>
               <Route  path='/form' component={Form}/>
               <Route  path='/table' component={Table}/>
+              <Route path='/city' component={City}/>
               <Route  component={NoMatch}/>
             </Switch>
           </Content>

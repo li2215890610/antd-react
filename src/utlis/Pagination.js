@@ -20,5 +20,6 @@ export default {
       showQuickJumper: true, //是否可以快速跳转至某页
       hideOnSinglePage: true, //只有一页时是否隐藏分页器
     }
-  }
+  },
+  
 }
