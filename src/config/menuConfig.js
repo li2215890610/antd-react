@@ -64,12 +64,8 @@ const menuList = [
       "icon":'table',      
       "children": [
           {
-              "title": '基础表格',
+              "title": '综合表格',
               "key": '/table/basic',
-          },
-          {
-              "title": '高级表格',
-              "key": '/table/high',
           }
       ]
   },

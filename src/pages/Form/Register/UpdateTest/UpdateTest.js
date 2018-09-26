@@ -124,7 +124,6 @@ class UpdateTest extends React.Component{
               <FormItem label="用户名" {...FormItemLayout}>
                 {
                   getFieldDecorator("userName", {
-                    initialValue: "",
                     rules: [
                       {
                         required: true,
@@ -132,16 +131,15 @@ class UpdateTest extends React.Component{
                       }
                     ]
                   })(
-                    <div>
+
                       <Input type="text" prefix={<Icon type="user"/>} style={{width:'300px'}} placeholder="请输入用户名" />
-                    </div>
+
                   )
                 }
               </FormItem>
               <FormItem label="密码" {...FormItemLayout}>
                 {
                   getFieldDecorator("userPwd", {
-                    initialValue: "",
                     rules: [
                       {
                         required: true,
