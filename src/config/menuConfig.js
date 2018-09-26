@@ -85,16 +85,16 @@ const menuList = [
   },
   {
       "title": '订单管理',
-      "key": '/copy',   
+      "key": '/order',   
       "icon":'file-add',      
       "children": [
           {
               "title": '订单详情',
-              "key": 'detail'
+              "key": '/order/detail'
           },
           {
               "title": '结束订单',
-              "key": 'finish'
+              "key": '/order/finish'
           }
       ]
   },

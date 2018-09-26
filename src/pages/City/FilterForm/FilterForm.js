@@ -22,14 +22,7 @@ class FilterForm extends React.Component {
   }
 
   getAllValueReset = () =>{
-    this.props.form.setFieldsValue( {
-      city_id:"",
-      mode:"",
-      op_mode:"",
-      auth_status:"",
-    },()=>{
-      
-    }) 
+    this.props.form.resetFields( ) 
   }
 
   render() {

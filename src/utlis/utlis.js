@@ -1,3 +1,9 @@
+import React from 'react';
+
+import { Select } from 'antd'
+
+const Option = Select.Option;
+
 export default {
   //获取当前时间
   formateData(times) {
@@ -19,9 +25,19 @@ export default {
       return `${y}-${m}-${d}  ${h} : ${minute} : ${second}`
     }
   },
-  formateTime(time){
-    if(!time)return '';
+  formateTime(time) {
+    if (!time) return '';
     let date = new Date(time);
-    return date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
-},
+    return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+  },
+  getOptionList(data) {
+    if (!data) {
+      return [];
+    }
+    let options = [] //[<Option value="0" key="all_key">全部</Option>];
+    data.map((item) => {
+      options.push(<Option value={item.id} key={item.id}>{item.name}</Option>)
+    })
+    return options;
+  },
 }
