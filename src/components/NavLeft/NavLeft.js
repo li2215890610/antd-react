@@ -84,28 +84,29 @@ class NavLeft extends React.Component {
 
   
   render() {
+    let { collapsed, current, openKeys} = this.state;
     let theme = 'dark'
     return (
       <div className='nav_left'>
         <div className='nav_left_top'>
           <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
-            <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
+            <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
           </Button>
         </div>
         <Sider
           trigger={null}
-          collapsed={this.state.collapsed}
+          collapsed={collapsed}
         >
           <Menu
-            defaultOpenKeys={['/home']}
-            defaultSelectedKeys={['/home']}
-            selectedKeys={[this.state.current]}
-            mode="inline"
-            theme={theme}
-            onClick={this.handleClick}
-            openKeys={this.state.openKeys}
-            onOpenChange={this.onOpenChange}
-            inlineCollapsed={this.state.collapsed}
+            mode="inline"  // 菜单样式
+            theme={theme} //定义主题颜色
+            // defaultOpenKeys={['/home']} // 默认展开的 一级菜单项
+            // defaultSelectedKeys={['/home']}  //默认选中的二级菜单项
+            selectedKeys={[current]} //默认选中
+            onClick={this.handleClick} //点击 MenuItem 调用此函数
+            openKeys={openKeys} //当前展开的 SubMenu 菜单项 key 数组	st
+            onOpenChange={this.onOpenChange}  //SubMenu 展开/关闭的回调
+            inlineCollapsed={collapsed} //菜单收起状态 Boolrn
           >
             {this.renderMenu(menuConfig)}
           </Menu>
@@ -117,3 +118,6 @@ class NavLeft extends React.Component {
 }
 
 export default NavLeft;
+
+
+

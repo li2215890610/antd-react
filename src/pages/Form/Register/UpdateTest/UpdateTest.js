@@ -131,9 +131,7 @@ class UpdateTest extends React.Component{
                       }
                     ]
                   })(
-
-                      <Input type="text" prefix={<Icon type="user"/>} style={{width:'300px'}} placeholder="请输入用户名" />
-
+                    <Input type="text" prefix={<Icon type="user"/>} style={{width:'300px'}} placeholder="请输入用户名" />
                   )
                 }
               </FormItem>

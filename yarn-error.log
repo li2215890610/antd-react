@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add moment --sava
+  /usr/local/bin/node /usr/local/bin/yarn add redux --save
 
 PATH: 
   /Users/liguangyang/.rvm/gems/ruby-2.2.2/bin:/Users/liguangyang/.rvm/gems/ruby-2.2.2@global/bin:/Users/liguangyang/.rvm/rubies/ruby-2.2.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/liguangyang/.rvm/gems/ruby-2.2.2/bin:/Users/liguangyang/.rvm/gems/ruby-2.2.2@global/bin:/Users/liguangyang/.rvm/rubies/ruby-2.2.2/bin:/Users/liguangyang/.rvm/bin:/Users/liguangyang/.rvm/bin
@@ -14,11 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/antd/-/antd-3.8.2.tgz: ETIMEDOUT
-      at Timeout._onTimeout (/usr/local/lib/node_modules/yarn/lib/cli.js:138128:19)
-      at ontimeout (timers.js:482:11)
-      at tryOnTimeout (timers.js:317:5)
-      at Timer.listOnTimeout (timers.js:277:5)
+  Error: EACCES: permission denied, rmdir '/Users/liguangyang/Desktop/antd-React/node_modules/.cache/babel-loader'
 
 npm manifest: 
   {
