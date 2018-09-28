@@ -18,6 +18,8 @@ import Order from "../../pages/Order/Order";
 
 import NoMatch from "../../pages/NoMatch/NoMatch";
 
+import LifeCycle from "../../pages/Component/LifeCycle";
+
 const { Content } = Layout
 
 class Contents extends React.Component{
@@ -39,6 +41,7 @@ class Contents extends React.Component{
               <Route  path='/table' component={Table}/>
               <Route path='/city' component={City}/>
               <Route path='/order' component={Order}/>
+              <Route path='/component' component={LifeCycle}/>
               <Route  component={NoMatch}/>
             </Switch>
           </Content>

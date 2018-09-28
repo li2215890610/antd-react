@@ -109,6 +109,10 @@ const menuList = [
         "icon": 'codepen',
         "key": '/permission'
     },
+    {
+        "title":"生命周期",
+        "key":"/component"
+    }
 ];
 
 
