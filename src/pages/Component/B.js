@@ -8,40 +8,54 @@ class B extends React.Component{
     this.state = {
 
     }
+    console.log(`constructor ---- ${this.props.value}`);
+    
   }
 
   number = 0;
 
   componentWillMount = ()=>{
-
+    console.log(`componentWillMount ---- ${this.props.value}`);
   }
+
   componentDidMount = ()=>{
+    console.log(`componentDidMount ---- ${this.props.value}`);
 
   }
+  
   //接收一个参数 新的props
   componentWillReceiveProps = (newProps) =>{
-    console.log(newProps,this.props.value)
+    console.log(`${newProps.value}新的props`,`--------`,`${this.props.value}老props`)
     
     if (newProps.value == this.props.value) {
-      console.log('Component 接收到新的props!  但是相同')
+      console.log('Component componentWillReceiveProps 接收到新的props!  但是对比之后发现相同')
     }else{  
-      console.log('Component 接收到新的props!')
+      console.log('Component componentWillReceiveProps 接收到新的props!')
     }
 
   }
+  
+  shouldComponentUpdate = (newProps) =>{
+    console.log(`${newProps.value}新的props`)
+    if (newProps.value == this.props.value) {
+      console.log('Component shouldComponentUpdate 接收到新的props! 但是对比之后发现相同 暂停生命周期函数执行')
+      return false;
+    }else{
+      console.log('Component shouldComponentUpdate 接收到新的props! 对比之后发现不相同 接下来走 componentWillUpdate')
+      return true
+    }
+  }
+
   componentWillUpdate = (nextProps, nextState)=> {
-
-    
-    console.log(nextProps,nextState)
-    console.log('Component 更新组件前!');
+    console.log(`${nextProps.value}新的props`,`--------`,`${this.props.value}老props`)
+    console.log('Component componentWillUpdate 更新组件前!');
   }
+
   componentDidUpdate = (prevProps, prevState)=> {
-    console.log(this.props.value);
+    console.log(`${prevProps.value}老的props`,`--------`,`${this.props.value} 新props,是componentWillUpdate 执行之后 render改变了props的值`)
 
-    // console.log(prevProps,prevState)
-    console.log('Component 更新组件后!')
+    console.log('Component componentDidUpdate 更新组件后!')
   }
-
 
 
   componentWillUnmount = ()=>{
@@ -49,7 +63,7 @@ class B extends React.Component{
   }
 
   render(){
-    console.log(this.props.value);
+    console.log(this.props,`render 执行了`);
     
     let { number} = this;
     let { value} = this.props;
