@@ -25,16 +25,12 @@ import configureReduxStore from './redux/Store/Store';
 // Redux Store对象，管理所有的Redux状态
 const store = configureReduxStore.configureStore();
 
-
 // import Life from "./pages/demo/Life";
 // import Admin from "./Admin";
 // import Home from "./pages/route_demo/route1/Home";
 // import Home from "./pages/route_demo/route2/router";
 
-
 moment.locale('zh-cn');
-
-
 
 ReactDOM.render(
   <Provider store={store}>
@@ -42,7 +38,6 @@ ReactDOM.render(
       <Router />
     </LocaleProvider>
   </Provider>
-
 , document.getElementById('root'));
 
 registerServiceWorker();

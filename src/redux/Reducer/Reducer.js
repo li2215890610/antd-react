@@ -1,26 +1,30 @@
 
 
-import { type } from "./../Type/Type";
-//数据处理
+import { type} from "../Type/Type";
 
+
+//数据处理
 const initialState = {
   menuName:"首页",
+  routerPage:"/home"
 }
 
-
 export default ( state = initialState, action)=>{
-  switch (state) {
-    case type.SWITCH_MENU:
 
+  switch (action.type) {
+    case type.SWITCH_MENU:
       return {
         ...state, //保存以前的值
-        menuName:action.menuName
+        menuName:action.menuName,
+        routerPage:action.routerPage
       }
-      break;
     default:
       return {
         ...state,
       } 
-      break;
   }
+
+
+
+  
 }

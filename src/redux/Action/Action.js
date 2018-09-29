@@ -1,9 +1,14 @@
-import { type } from "./../Type/Type";
+import { type} from "../Type/Type";
+
+console.log(type);
 
 //定义处理函数
-export function switchMenu(menuName) {
-  return{
-    type: type.SWITCH_MENU,
-    menuName
+export default { 
+  switchMenu(menuName,routerPage) {
+    return{
+      type: type.SWITCH_MENU,
+      menuName,
+      routerPage,
+    }
   }
 }

@@ -2,7 +2,12 @@ import React from "react";
 
 import { Menu, Icon, Button, Layout } from 'antd';
 
-import { Link} from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
+
+import { connect } from "react-redux";
+
+import Action from "./../../redux/Action/Action";
+
 import menuConfig from "../../config/menuConfig";
 
 import "./NavLeft.less";
@@ -18,11 +23,17 @@ class NavLeft extends React.Component {
     super(props)
     this.state = {
       collapsed: false,
-      openKeys: ['/home'],
+      openKeys: [],
       current:"/home"
     };
+    
   }
 
+  componentDidMount = ()=>{ 
+    this.setState({
+      current: window.location.pathname
+    })
+  }
   rootSubmenuKeys = ['/home', '/ui', '/form','/table','/rich','/city','/order','/user','/bikeMap','/charts','/permission']
 
   toggleCollapsed = () => {
@@ -42,9 +53,14 @@ class NavLeft extends React.Component {
     }
   }
 
-  handleClick = (e) => {
+  handleClick = ({ item, key }) => {
+
+    let { dispatch } = this.props;
+    
+    dispatch(Action.switchMenu(item.props.title,key))
+
     this.setState({
-      current: e.key,
+      current: key,
     });
   }
 
@@ -67,15 +83,17 @@ class NavLeft extends React.Component {
             </SubMenu>
           )
         } else {
-          return (<Menu.Item key={menu.key}>{
-              <span>
-                {
-                  menu.icon ? <Icon type={menu.icon} /> : ''
-                }
+          return (<Menu.Item title={menu.title} key={menu.key}>{
+              <NavLink className='link_font_color' to={menu.key}>
                 <span>
-                  <Link className='link_font_color' to={menu.key}>{menu.title}</Link>
+                  {
+                    menu.icon ? <Icon type={menu.icon} /> : ''
+                  }
+                  <span>
+                    {menu.title}
+                  </span>
                 </span>
-              </span>
+              </NavLink>
           }</Menu.Item>)
         }
       })
@@ -84,6 +102,7 @@ class NavLeft extends React.Component {
 
   
   render() {
+
     let { collapsed, current, openKeys} = this.state;
     let theme = 'dark'
     return (
@@ -117,7 +136,7 @@ class NavLeft extends React.Component {
   }
 }
 
-export default NavLeft;
+export default connect()(NavLeft);
 
 
 

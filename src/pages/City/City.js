@@ -48,6 +48,8 @@ export default class City extends React.Component {
         List,
         Pagination: Pagination.Pagination(res, this.handlePaginationChange, this.handlePaginationShowSizeChange)
       })
+    }).catch((err)=>{
+      console.log(err.code);
     })
   }
 
@@ -94,6 +96,9 @@ export default class City extends React.Component {
               isShowOpenCity: false
             })
             this.requestList();
+          }else{
+            console.log(res);
+            
           }
         })
       }

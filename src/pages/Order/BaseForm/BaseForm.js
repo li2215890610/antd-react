@@ -1,13 +1,23 @@
 import React from 'react'
-import { Input, Select, Form, Button, Checkbox, DatePicker } from 'antd'
+
+import { Input, Select, Form, Button, DatePicker } from 'antd'
+
 import Utils from '../../../utlis/utlis';
+
 const FormItem = Form.Item;
 
 class FilterForm extends React.Component {
 
   handleFilterSubmit = () => {
     let fieldsValue = this.props.form.getFieldsValue();
-    this.props.filterSubmit(fieldsValue);
+    
+    const values = {
+      ...fieldsValue,
+      'begin_time': fieldsValue['begin_time'].format('YYYY-MM-DD HH:mm:ss'),
+      'end_time': fieldsValue['end_time'].format('YYYY-MM-DD HH:mm:ss'),
+    };    
+
+    this.props.filterSubmit(values);
   }
 
   reset = () => {
@@ -16,106 +26,66 @@ class FilterForm extends React.Component {
 
   formList = [
     {
-      type: 'SELECT',
-      label: '城市',
-      field: 'city',
-      placeholder: '全部',
-      initialValue: '1',
-      width: 80,
       list: [{ id: '0', name: '全部' }, { id: '1', name: '北京' }, { id: '2', name: '天津' }, { id: '3', name: '上海' }]
     },
     {
-      type: '时间查询'
-    },
-    {
-      type: 'SELECT',
-      label: '订单状态',
-      field: 'order_status',
-      placeholder: '全部',
-      initialValue: '1',
-      width: 80,
       list: [{ id: '0', name: '全部' }, { id: '1', name: '进行中' }, { id: '2', name: '结束行程' }]
     }
   ]
 
-  initFormList = () => {
-    const { getFieldDecorator } = this.props.form;
-    const formList = this.formList;
-    const formItemList = [];
-    if (formList && formList.length > 0) {
-      formList.forEach((item, i) => {
-        let label = item.label;
-        let field = item.field;
-        let initialValue = item.initialValue || '';
-        let placeholder = item.placeholder;
-        let width = item.width;
-        if (item.type === '时间查询') {
-          const begin_time = <FormItem label="订单时间" key={field}>
-            {
-              getFieldDecorator('begin_time')(
-                <DatePicker showTime={true} placeholder={placeholder} format="YYYY-MM-DD HH:mm:ss" />
-              )
-            }
-          </FormItem>;
-          formItemList.push(begin_time)
-          const end_time = <FormItem label="~" colon={false} key={field}>
-            {
-              getFieldDecorator('end_time')(
-                <DatePicker showTime={true} placeholder={placeholder} format="YYYY-MM-DD HH:mm:ss" />
-              )
-            }
-          </FormItem>;
-          formItemList.push(end_time)
-        } else if (item.type === 'INPUT') {
-          const INPUT = <FormItem label={label} key={field}>
-            {
-              getFieldDecorator([field], {
-                initialValue: initialValue
-              })(
-                <Input type="text" placeholder={placeholder} />
-              )
-            }
-          </FormItem>;
-          formItemList.push(INPUT)
-        } else if (item.type === 'SELECT') {
-          const SELECT = <FormItem label={label} key={field}>
-            {
-              getFieldDecorator([field], {
-                initialValue: initialValue
-              })(
-                <Select
-                  style={{ width: width }}
-                  placeholder={placeholder}
-                >
-                  {Utils.getOptionList(item.list)}
-                </Select>
-              )
-            }
-          </FormItem>;
-          formItemList.push(SELECT)
-        } else if (item.type === 'CHECKBOX') {
-          const CHECKBOX = <FormItem label={label} key={field}>
-            {
-              getFieldDecorator([field], {
-                valuePropName: 'checked',
-                initialValue: initialValue //true | false
-              })(
-                <Checkbox>
-                  {label}
-                </Checkbox>
-              )
-            }
-          </FormItem>;
-          formItemList.push(CHECKBOX)
-        }
-      })
-    }
-    return formItemList;
-  }
+
+
   render() {
+    const { getFieldDecorator } = this.props.form;
+    let { formList} = this;
     return (
       <Form layout="inline">
-        {this.initFormList()}
+        <FormItem label="订单时间" >
+          {
+            getFieldDecorator('begin_time')(
+              <DatePicker showTime={true} placeholder='请输入' format="YYYY-MM-DD HH:mm:ss" />
+            )
+          }
+        </FormItem>
+        <FormItem label="~" colon={false} >
+          {
+            getFieldDecorator('end_time')(
+              <DatePicker showTime={true} placeholder='请输入' format="YYYY-MM-DD HH:mm:ss" />
+            )
+          }
+        </FormItem>
+        <FormItem  key='city'>
+          {
+              getFieldDecorator('city')(
+                <Select
+                  style={{width:'100px'}}
+                  placeholder='请选择'
+                >
+                    {Utils.getOptionList(formList[0].list)}
+                </Select>
+              )
+          }
+        </FormItem>
+        <FormItem  key='order_status'>
+          {
+              getFieldDecorator('order_status')(
+                <Select
+                  style={{width:'100px'}}
+                  placeholder='请选择'
+                >
+                    {Utils.getOptionList(formList[1].list)}
+                </Select>
+              )
+          }
+        </FormItem>
+        <FormItem>
+            {
+              getFieldDecorator('inputValue')(
+
+                <Input type="text" placeholder='请输入搜索内容' />
+              )
+            }
+        </FormItem>
         <FormItem>
           <Button type="primary" style={{ margin: '0 20px' }} onClick={this.handleFilterSubmit}>查询</Button>
           <Button onClick={this.reset}>重置</Button>

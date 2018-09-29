@@ -87,8 +87,6 @@ class UpdateTest extends React.Component{
         loading: false,
       }));
     }
-
-
   }
 
   
@@ -114,8 +112,6 @@ class UpdateTest extends React.Component{
         <Icon type={loading ? 'loading' : 'plus'} />
       </div>
     );
-
-    console.log(this.props.data);
     
     return(
       <div>

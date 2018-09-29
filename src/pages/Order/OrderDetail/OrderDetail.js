@@ -103,6 +103,10 @@ class OrderDetail extends React.Component {
     console.log(data);
   }
 
+  handleFilter = (data) =>{
+    console.log(data);
+  }
+
   render() {
     const columns = [
       {
@@ -140,7 +144,10 @@ class OrderDetail extends React.Component {
       }, {
         title: '操作时间',
         dataIndex: 'update_time',
-        render: Utils.formateDate
+        render(value){
+          let time = Utils.formateData(value)
+          return time
+        }
       }, {
         title: '操作人',
         dataIndex: 'sys_user_name'

@@ -70,11 +70,6 @@ const menuList = [
         ]
     },
     {
-        "icon": 'file-text',
-        "title": '富文本',
-        "key": '/rich'
-    },
-    {
         "title": '城市管理',
         "icon": 'flag',
         "key": '/city'

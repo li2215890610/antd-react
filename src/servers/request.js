@@ -12,6 +12,7 @@ export default class jsonp {
       jsonpRequset(data.url, {
         param: 'callback'
       }, (err, res) => {
+        debugger
         if (res.status === 'success') {
           resolve(res.results[0].weather_data[0]);
         } else {
@@ -28,7 +29,6 @@ export default class jsonp {
     //   loading = document.getElementById('ajaxLoading');
     //   loading.style.display = 'block';
     // }
-
 
     return new Promise((resolve, reject) => {
       axios({
@@ -52,14 +52,14 @@ export default class jsonp {
           }
         } else {
           reject(response.data,null);
-        }
+        }        
+      }).catch((err)=>{        
+        reject(err,null)
       })
     });
   }
 
   static HttpPost(options) {
-
-
 
     return new Promise((resolve, reject) => {
       axios({
@@ -83,6 +83,8 @@ export default class jsonp {
         } else {
           reject(response.data,null);
         }
+      }).catch((err)=>{        
+        reject(err,null)
       })
     });
   }
