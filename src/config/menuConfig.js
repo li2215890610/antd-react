@@ -111,7 +111,8 @@ const menuList = [
     },
     {
         "title":"生命周期",
-        "key":"/component"
+        "icon":"radius-setting",
+        "key":"/component",
     }
 ];
 
