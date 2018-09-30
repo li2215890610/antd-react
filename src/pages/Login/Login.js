@@ -1,13 +1,18 @@
 import React from 'react';
 
-import  "./Login.less";
+import "./Login.less";
 
-import {Form, Input, Button} from 'antd'
+import Historys from "../../history";
+
+import { Form, Input, Button } from 'antd'
 
 const FormItem = Form.Item;
 
+console.log(Historys);
+
+
 export default class Login extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
 
@@ -15,7 +20,7 @@ export default class Login extends React.Component {
     }
 
     componentDidMount() {//每次进入登录页清除之前的登录信息
-        
+
     }
 
     loginReq = (params) => {
@@ -27,22 +32,22 @@ export default class Login extends React.Component {
             <div className="login-page">
                 <div className="login-header">
                     <div className="logo">
-                        <img src="/assets/logo-ant.svg" alt="慕课后台管理系统"/>
-                        React全家桶+AntD 共享经济热门项目后台管理系统
+                        <img src="/assets/logo-ant.svg" alt="慕课后台管理系统" />
+                        React全家桶+AntD 后台管理系统
                     </div>
                 </div>
                 <div className="login-content-wrap">
                     <div className="login-content">
-                        <div className="word">低碳出行 <br />引领城市新经济</div>
+                        <div className="word">低碳环保 <br />引领城市新经济发展</div>
                         <div className="login-box">
                             <div className="error-msg-wrap">
                                 <div
-                                    className={this.state.errorMsg?"show":""}>
+                                    className={this.state.errorMsg ? "show" : ""}>
                                     {this.state.errorMsg}
                                 </div>
                             </div>
                             <div className="title">欢迎使用</div>
-                            <LoginForm ref="login" loginSubmit={this.loginReq}/>
+                            <LoginForm ref="login" loginSubmit={this.loginReq} />
                         </div>
                     </div>
                 </div>
@@ -54,7 +59,7 @@ export default class Login extends React.Component {
 class LoginForm extends React.Component {
     state = {};
 
-    loginSubmit = (e)=> {
+    loginSubmit = (e) => {
         e && e.preventDefault();
         // const _this = this;
         // this.props.form.validateFieldsAndScroll((err, values) => {
@@ -67,7 +72,15 @@ class LoginForm extends React.Component {
         //     }
         // });
 
-        window.location.href="/home"
+        let name = '222';
+        let ks = '111'
+        const location = {
+            pathname: `/home/${name}/${ks}`,
+            // pathname: `/home`,
+        }
+        Historys.push(location);
+
+
     };
 
     checkUsername = (rule, value, callback) => {
@@ -95,10 +108,10 @@ class LoginForm extends React.Component {
             <Form className="login-form">
                 <FormItem>
                     {getFieldDecorator('username', {
-                        initialValue:'admin',
-                        rules: [{validator: this.checkUsername}]
+                        initialValue: 'admin',
+                        rules: [{ validator: this.checkUsername }]
                     })(
-                        <Input placeholder="用户名"/>
+                        <Input placeholder="用户名" />
                     )}
                 </FormItem>
                 <FormItem>
@@ -106,8 +119,8 @@ class LoginForm extends React.Component {
                         initialValue:'admin',
                         rules: [{validator: this.checkPassword}]
                     })( */}
-                        {/* <Input type="password" placeholder="密码" wrappedcomponentref={(inst) => this.pwd = inst } /> */}
-                        <Input type="password" placeholder="密码"  />
+                    {/* <Input type="password" placeholder="密码" wrappedcomponentref={(inst) => this.pwd = inst } /> */}
+                    <Input type="password" placeholder="密码" />
 
                     {/* )} */}
                 </FormItem>

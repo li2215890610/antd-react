@@ -11,6 +11,9 @@ class Home extends React.Component{
   }
 
   render (){
+    
+    console.log(this.props);
+    
     return(
       <div className='home_warp'>
           <h1>欢迎学习React+antd 后台管理系统</h1>

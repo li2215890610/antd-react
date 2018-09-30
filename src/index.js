@@ -2,7 +2,7 @@ import React from 'react';
 
 import ReactDOM from 'react-dom';
 
-import {  LocaleProvider } from 'antd';
+import { LocaleProvider } from 'antd';
 
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 
@@ -15,7 +15,7 @@ import registerServiceWorker from './registerServiceWorker';
 // 全局设置 locale 日期插件中文显示
 import 'moment/locale/zh-cn';
 
-import Router from "./router";
+import Routers from "./router";
 
 // 配置全局 redux 
 import { Provider } from 'react-redux'
@@ -35,7 +35,7 @@ moment.locale('zh-cn');
 ReactDOM.render(
   <Provider store={store}>
     <LocaleProvider locale={zhCN}>
-      <Router />
+      <Routers/>
     </LocaleProvider>
   </Provider>
 , document.getElementById('root'));
