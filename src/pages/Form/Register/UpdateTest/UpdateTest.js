@@ -1,14 +1,16 @@
 import React from "react";
 
-import moment  from "moment";
+// import moment  from "moment";
 
-import locale from 'antd/lib/date-picker/locale/zh_CN';
+// import locale from 'antd/lib/date-picker/locale/zh_CN';
 
 import "../../Form.less";
 
 import Message from "../../../../utlis/MessageUtlis";
 
-import { Card, Form, Input, Checkbox, Radio, Select, Switch, DatePicker, TimePicker, Upload, Icon, Button, InputNumber,message } from "antd";
+import { Card, Form, Input, Checkbox, Radio, Select, Switch, 
+  // DatePicker, TimePicker, 
+  Upload, Icon, Button, InputNumber,message } from "antd";
 
 const FormItem = Form.Item;
 
