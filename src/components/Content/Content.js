@@ -6,23 +6,34 @@ import { Route, Switch } from 'react-router-dom';
 
 // import Breadcrumbs from "../Breadcrumb/Breadcrumbs";
 
-import Home from "../../pages/Home/Home";
+import AsyncComponent from "../AsyncComponent/AsyncComponent";
 
-import Ui from "../../pages/Ui/Ui";
+// import Home from "../../pages/Home/Home";
+const Home =  AsyncComponent(() => import("../../pages/Home/Home"));
 
-import Form from "../../pages/Form/Form";
+// import Ui from "../../pages/Ui/Ui";
+const Ui =  AsyncComponent(() => import("../../pages/Ui/Ui"));
 
-import Table from "../../pages/Table/Table";
+// import Form from "../../pages/Form/Form";
+const Form =  AsyncComponent(() => import("../../pages/Form/Form"));
 
-import City from "../../pages/City/City";
+// import Table from "../../pages/Table/Table";
+const Table =  AsyncComponent(() => import("../../pages/Table/Table"));
 
-import Order from "../../pages/Order/Order";
+// import City from "../../pages/City/City";
+const City =  AsyncComponent(() => import("../../pages/City/City"));
 
-import NoMatch from "../../pages/NoMatch/NoMatch";
+// import Order from "../../pages/Order/Order";
+const Order =  AsyncComponent(() => import("../../pages/Order/Order"));
 
-import LifeCycle from "../../pages/Component/LifeCycle";
+// import NoMatch from "../../pages/NoMatch/NoMatch";
+const NoMatch =  AsyncComponent(() => import("../../pages/NoMatch/NoMatch"));
+
+// import LifeCycle from "../../pages/Component/LifeCycle";
+const LifeCycle =  AsyncComponent(() => import("../../pages/Component/LifeCycle"));
 
 const { Content } = Layout
+
 
 class Contents extends React.Component {
   constructor(props) {

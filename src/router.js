@@ -2,11 +2,20 @@ import React from 'react';
 
 import { BrowserRouter, Route, Switch, Router } from 'react-router-dom';
 
+import AsyncComponent from "./components/AsyncComponent/AsyncComponent";
+
 // import App from "./App";
 import history from "./history";
-import Login from "./pages/Login/Login";
-import Admin from "./Admin";
-import NoMatch from "./pages/NoMatch/NoMatch";
+
+// import Login from "./pages/Login/Login";
+const Login = AsyncComponent(() => import("./pages/Login/Login"));
+
+// import Admin from "./Admin";
+const Admin = AsyncComponent(() => import("./Admin"));
+
+// import NoMatch from "./pages/NoMatch/NoMatch";
+const NoMatch = AsyncComponent(() => import("./pages/NoMatch/NoMatch"));
+
 class IRouter extends React.Component {
   constructor(porps) {
     super(porps)
