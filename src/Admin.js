@@ -41,9 +41,7 @@ class Admin extends React.Component {
           <NavLefts className='nav_left' />
           <Layout className='content' style={{ overflowY: 'auto'}}>
             <Contents/>
-            {/* <Footer> */}
             <Footers />
-            {/* </Footer> */}
           </Layout>
         </Layout>
       </div>
