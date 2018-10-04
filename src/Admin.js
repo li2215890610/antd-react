@@ -8,7 +8,7 @@ import './styles/common.less';
 
 import { Layout } from 'antd';
 
-const { Content, Footer } = Layout;
+// const { Footer } = Layout;
 
 // import Header from "./components/Header/Header";
 const Header =  AsyncComponent(() => import("./components/Header/Header"));
@@ -39,16 +39,11 @@ class Admin extends React.Component {
         <Header />
         <Layout className='container'>
           <NavLefts className='nav_left' />
-          <Layout className='content'>
-            <Content>
-
-              <Contents/>
-
-              
-            </Content>
-            <Footer>
-              <Footers />
-            </Footer>
+          <Layout className='content' style={{ overflowY: 'auto'}}>
+            <Contents/>
+            {/* <Footer> */}
+            <Footers />
+            {/* </Footer> */}
           </Layout>
         </Layout>
       </div>

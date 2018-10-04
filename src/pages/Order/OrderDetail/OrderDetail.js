@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card, Table, Modal } from 'antd';
+import { Card, Table } from 'antd';
 
 import BaseForm from "../BaseForm/BaseForm";
 
@@ -10,14 +10,11 @@ import Utils from '../../../utlis/utlis';
 
 import Pagination from "../../../utlis/Pagination";
 
-import MessageUtlis from "../../../utlis/MessageUtlis";
-
 class OrderDetail extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       List: [],
-      isShowOpenCity: false
     }
   }
 
@@ -61,50 +58,9 @@ class OrderDetail extends React.Component {
     this.requestList();
   }
 
-  // 开通城市
-  handleOpenCity = () => {
-    this.setState({
-      isShowOpenCity: true
-    })
-  }
 
   cityFormValue = (value) => {
     this.cityForm = value
-  }
-
-  // 城市开通提交
-  handleSubmit = () => {
-
-    let cityInfo =  this.cityForm.props.form.getFieldsValue();
-
-    this.cityForm.props.form.validateFields((err,data)=>{
-
-      if (!err) {
-        httpRequest.HttpGet({
-          url: '/city/open',
-          data: {
-            params: cityInfo
-          }
-        }).then((res) => {
-          if (res.code === 0) {
-            MessageUtlis.Messages('success','开通成功');
-            this.setState({
-              isShowOpenCity: false
-            })
-            this.requestList();
-          }
-        })
-      }
-    });
-  }
-
-  // 接收搜索监听
-  onWatchSearch = ( data )=>{
-    console.log(data);
-  }
-
-  handleFilter = (data) =>{
-    console.log(data);
   }
 
   render() {
@@ -154,37 +110,23 @@ class OrderDetail extends React.Component {
       }
     ]
 
-    let { Pagination, List, isShowOpenCity } = this.state;
+    let { Pagination, List } = this.state;
 
     return (
       <div>
         <Card>
           <BaseForm  filterSubmit={this.handleFilter}/>
         </Card>
+
         <Card style={{ marginTop: 10 }}>
 
         </Card>
-        <div>
-          <Table
-            bordered
-            columns={columns}
-            dataSource={List}
-            pagination={Pagination}
-          />
-        </div>
-        <Modal
-          title="开通城市"
-          visible={isShowOpenCity}
-          onCancel={() => {
-            this.setState({
-              isShowOpenCity: false
-            })
-          }}
-          onOk={this.handleSubmit}
-        >
-
-          
-        </Modal>
+        <Table
+          bordered
+          columns={columns}
+          dataSource={List}
+          pagination={Pagination}
+        />
       </div>
     );
   }
