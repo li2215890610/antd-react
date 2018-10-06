@@ -17,8 +17,8 @@ class Footers extends React.Component{
   render(){
     let {link_url} = this;
     return (
-      <Footer>
-        <div className='footer'>
+      <Footer className='footer'>
+        <div>
             Ant React ©2018 UED 视觉交互 版权所有 归属 <a className="link" href={link_url} target="_blank">杨大侠</a>
         </div>
       </Footer>
