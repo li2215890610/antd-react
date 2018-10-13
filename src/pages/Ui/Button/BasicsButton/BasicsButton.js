@@ -7,7 +7,7 @@ import { Button } from "antd";
 class BasicsButton extends React.Component {
 
   onClick = () =>{
-    history.push('/')
+    history.push('/home')
   }
   render() {
     return (

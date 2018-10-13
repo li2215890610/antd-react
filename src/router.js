@@ -29,7 +29,7 @@ class IRouter extends React.Component {
       <BrowserRouter>
         <Router history={history}>
           <Switch>
-            <Route path='/' component={Login} exact />
+            <Route path='/login' component={Login} exact />
             <Route path='/' component={Admin} />
             {/* 没有开发完的组件 默认跳转 NoMatch 404组件 */}
             <Route component={NoMatch} />
