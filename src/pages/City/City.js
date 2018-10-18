@@ -78,7 +78,7 @@ export default class City extends React.Component {
 
   // 城市开通提交
   handleSubmit = () => {
-
+// https://www.cnblogs.com/wyangnb/p/9400347.html
     let cityInfo =  this.cityForm.props.form.getFieldsValue();
 
     this.cityForm.props.form.validateFields((err,data)=>{
