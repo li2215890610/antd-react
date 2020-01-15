@@ -27,7 +27,7 @@ class B extends React.Component{
   componentWillReceiveProps = (newProps) =>{
     console.log(`${newProps.value}新的props`,`--------`,`${this.props.value}老props`)
     
-    if (newProps.value == this.props.value) {
+    if (newProps.value === this.props.value) {
       console.log('Component componentWillReceiveProps 接收到新的props!  但是对比之后发现相同')
     }else{  
       console.log('Component componentWillReceiveProps 接收到新的props!')
@@ -37,7 +37,7 @@ class B extends React.Component{
   
   shouldComponentUpdate = (newProps) =>{
     console.log(`${newProps.value}新的props`)
-    if (newProps.value == this.props.value) {
+    if (newProps.value === this.props.value) {
       console.log('Component shouldComponentUpdate 接收到新的props! 但是对比之后发现相同 暂停生命周期函数执行')
       return false;
     }else{
